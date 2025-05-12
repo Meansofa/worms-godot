@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cu8cf3vx3dhms"]
+
+[sub_resource type="Shader" id="Shader_ruth0"]
+code = "shader_type canvas_item;
+
+uniform vec4 solid_color : source_color;
+uniform float modifier : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+    vec4 texture_color = texture(TEXTURE, UV);
+	texture_color.rgb = mix(texture_color.rgb, solid_color.rgb, modifier);
+    COLOR = texture_color;
+}"
+
+[resource]
+shader = SubResource("Shader_ruth0")
+shader_parameter/solid_color = Color(0.854343, 0.644727, 0.672501, 1)
+shader_parameter/modifier = 1.0
